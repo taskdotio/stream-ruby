@@ -20,6 +20,7 @@ module Stream
       require 'stream/personalization'
       require 'stream/collections'
       require 'stream/activities'
+      require 'stream/reactions'
 
       include Stream::SignedRequest
       include Stream::Batch
