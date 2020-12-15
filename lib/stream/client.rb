@@ -81,6 +81,10 @@ module Stream
       token = @signer.sign(feed_slug, user_id)
       Stream::Feed.new(self, feed_slug, user_id, token)
     end
+    
+    def reactions
+      ReactionsClient.new(api_key, api_secret, app_id, client_options)
+    end
 
     def personalization
       PersonalizationClient.new(api_key, api_secret, app_id, client_options)
