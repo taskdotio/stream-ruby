@@ -20,6 +20,7 @@ module Stream
       require 'stream/personalization'
       require 'stream/collections'
       require 'stream/activities'
+      require 'stream/reactions'
 
       include Stream::SignedRequest
       include Stream::Batch
@@ -79,6 +80,10 @@ module Stream
     def feed(feed_slug, user_id)
       token = @signer.sign(feed_slug, user_id)
       Stream::Feed.new(self, feed_slug, user_id, token)
+    end
+    
+    def reactions
+      ReactionsClient.new(api_key, api_secret, app_id, client_options)
     end
 
     def personalization
